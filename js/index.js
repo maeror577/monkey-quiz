@@ -89,19 +89,19 @@ function showTooltipWithSound() {
   let date = new Date();
 
   if (date < dateBirthdayMin) {
-    tooltip.innerHTML = `Ещё не наступил, рано пришли!`;
+    tooltip.innerHTML = "Ещё не наступил, рано пришли!";
   } else if (date > dateBirthdayMax) {
-    tooltip.innerHTML = `Уже прошёл, приходите через год!`;
+    tooltip.innerHTML = "Уже прошёл, приходите через год!";
   } else {
-    tooltip.innerHTML = `Это сегодня! Какая удача!`;
+    tooltip.innerHTML = "Это сегодня! Какая удача!";
   }
 
   tooltip.style.opacity = 1;
-  tooltip.style.visibility = `visible`;
+  tooltip.style.visibility = "visible";
 
   setTimeout(() => {
     tooltip.style.opacity = 0;
-    tooltip.style.visibility = `hidden`;
+    tooltip.style.visibility = "hidden";
   }, 3000)
 }
 
@@ -123,7 +123,7 @@ function fillAnswers(value) {
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     buttonCommit.classList.add("button-commit__pressed");
-    buttonCommit.click()
+    buttonCommit.click();
   };
 });
 
@@ -141,9 +141,9 @@ const runTimer = () => {
   timer = window.setTimeout(
     () => {
       hint.style.opacity = 0;
-      hint.style.visibility = `hidden`;
-      input.style.backgroundColor = `white`;
-      input.style.boxShadow = `0 0 .3rem .3rem white, .6rem .6rem .2rem gray`;
+      hint.style.visibility = "hidden";
+      input.style.backgroundColor = "white";
+      input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
     }, 3000);
 }
 
@@ -158,8 +158,8 @@ function loadNext(number) {
 
   // initial styling
   hint.style.opacity = 0;
-  input.style.backgroundColor = `white`;
-  input.style.boxShadow = `0 0 .3rem .3rem white, .6rem .6rem .2rem gray`;
+  input.style.backgroundColor = "white";
+  input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
   buttonContinue.style.display = "none";
   buttonCommit.style.display = "inline-block";
 
@@ -172,31 +172,32 @@ function checkQuestion(number) {
   const value = input.value.toLowerCase()
 
   if (quiz.possibleAnswers[number].includes(value)) {
-    input.style.backgroundColor = `var(--light-green)`;
-    input.style.boxShadow = `0 0 .3rem .3rem var(--light-green), .6rem .6rem .2rem gray`;
+    input.style.backgroundColor = "var(--light-green)";
+    input.style.boxShadow = "0 0 .3rem .3rem var(--light-green), .6rem .6rem .2rem gray";
     input.setAttribute("disabled", "true");
-    hint.innerText = `Ты прав, маленький умник!`;
+    hint.innerText = "Ты прав, маленький умник!";
     buttonCommit.style.display = "none";
     buttonContinue.style.display = "inline-block";
     buttonContinue.setAttribute("onclick", `loadNext(${number + 1})`);
+    // buttonContinue.focus();
 
     fillAnswers(quiz.correctAnswers[number]);
   } else {
-    input.style.backgroundColor = `var(--light-red)`;
-    input.style.boxShadow = `0 0 .3rem .3rem var(--light-red), .6rem .6rem .2rem gray`;
+    input.style.backgroundColor = "var(--light-red)";
+    input.style.boxShadow = "0 0 .3rem .3rem var(--light-red), .6rem .6rem .2rem gray";
     if (value === "") {
-      hint.innerText = `Не забудь написать ответ, дуралей!`;
+      hint.innerText = "Не забудь написать ответ, дуралей!";
     } else if (isNaN(value)) {
-      hint.innerText = `Ты пишешь какую-то ерунду, мартын! Пиши понятней!`;
+      hint.innerText = "Ты пишешь какую-то ерунду, мартын! Пиши понятней!";
     } else if (Number(value) < 5) {
-      hint.innerText = `Похоже, кого-то ты забыл, мой юный друг!`;
+      hint.innerText = "Похоже, кого-то ты забыл, мой юный друг!";
     } else if (Number(value) > 5) {
-      hint.innerText = `Что-то многовато у тебя вышло. Сестры и сам Рундил не считаются!`;
+      hint.innerText = "Что-то многовато у тебя вышло. Сестры и сам Рундил не считаются!";
     }
   };
 
   hint.style.opacity = 1;
-  hint.style.visibility = `visible`;
+  hint.style.visibility = "visible";
 
   clearTimeout(timer);
   runTimer();
