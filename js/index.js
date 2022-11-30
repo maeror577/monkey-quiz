@@ -122,14 +122,16 @@ function fillAnswers(value) {
 
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    buttonCommit.classList.add("button-commit__pressed");
-    buttonCommit.click();
+    let button = buttonCommit.style.display != "none" ? buttonCommit : buttonContinue;
+    button.classList.add("button__pressed");
   };
 });
 
 input.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
-    buttonCommit.classList.remove("button-commit__pressed");
+    let button = buttonCommit.style.display != "none" ? buttonCommit : buttonContinue;
+    button.classList.remove("button__pressed");
+    button.click();
   };
 });
 
@@ -174,12 +176,10 @@ function checkQuestion(number) {
   if (quiz.possibleAnswers[number].includes(value)) {
     input.style.backgroundColor = "var(--light-green)";
     input.style.boxShadow = "0 0 .3rem .3rem var(--light-green), .6rem .6rem .2rem gray";
-    input.setAttribute("disabled", "true");
     hint.innerText = "Ты прав, маленький умник!";
     buttonCommit.style.display = "none";
     buttonContinue.style.display = "inline-block";
     buttonContinue.setAttribute("onclick", `loadNext(${number + 1})`);
-    // buttonContinue.focus();
 
     fillAnswers(quiz.correctAnswers[number]);
   } else {
