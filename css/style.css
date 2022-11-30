@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Underdog:wght@200;300;400;500&display=swap');
+
+:root {
+  --light-grey: rgba(236, 228, 228, 0.8);
+  --full-green: rgba(27, 211, 27, 1);
+  --light-green: rgba(92, 255, 100, 1);
+  --light-red: rgba(255, 122, 122, 1);
+}
+
+body {
+  background-color: #b8c6db;
+  font-family: 'Underdog', sans-serif;
+  font-size: 2.3vmin;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 0;
+  text-align: center;
+
+  background-image: url('../img/background.jpg');
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 100%;
+
+  /* backdrop-filter: saturate(20000%) invert(100%); */
+  /* backdrop-filter: grayscale(100%); */
+  /* animation: backgroundScroll 10s ease-in-out infinite; */
+}
+
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 130%;
+}
+
+h1>span {
+  display: inline-block;
+  animation: bouncingLetters 2s infinite;
+}
+
+h1>span:nth-child(1) {
+  animation-delay: 0.25s;
+}
+
+h1>span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+h1>span:nth-child(3) {
+  animation-delay: 0.75s;
+}
+
+h1>span:nth-child(4) {
+  animation-delay: 1s;
+}
+
+.main-content {
+  flex: 2;
+  position: relative;
+  height: 75%;
+  max-width: 75%;
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 .3rem .3rem var(--light-grey);
+}
+
+#text-underscore {
+  text-decoration: underline dashed .05rem;
+  cursor: pointer;
+}
+
+#button-commit,
+#button-continue {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: var(--light-green);
+  box-shadow: 0 0 .2rem .2rem var(--light-green), .6rem .6rem .2rem gray;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Underdog', sans-serif;
+  font-size: 150%;
+  font-weight: 800;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  padding: .5rem;
+  margin: 1rem;
+  transition-duration: .3s;
+  max-width: 50%;
+}
+
+#button-continue {
+  display: none;
+}
+
+#button-commit:hover,
+#button-continue:hover {
+  transform: translateY(-.2rem);
+  box-shadow: 0 0 .2rem .2rem var(--light-green), .8rem .8rem .2rem gray;
+}
+
+#button-commit:active,
+#button-continue:active,
+.button-commit__pressed {
+  transform: translateY(.5rem);
+  box-shadow: 0 0 .2rem .2rem var(--light-green), .4rem .4rem .2rem gray;
+}
+
+.form-input {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-input input {
+  color: black;
+  box-shadow: 0 0 .3rem .3rem white, .6rem .6rem .2rem gray;
+  font-family: 'Underdog', sans-serif;
+  font-size: 150%;
+  border: none;
+  border-radius: 1rem;
+  padding: .5rem;
+  margin: 1rem;
+  text-align: center;
+  outline: none;
+  max-width: 50%;
+  transition-duration: 1s;
+}
+
+#text-tooltip,
+#text-hint {
+  margin: 0;
+  font-size: 100%;
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+#text-tooltip {
+  position: absolute;
+  top: .3rem;
+  right: .3rem;
+}
+
+#wrapper-answers {
+  /* position: absolute; */
+  /* top: 10px; */
+  /* right: 10px; */
+  /* width: 300px; */
+  flex: 1;
+  background-color: var(--light-grey);
+  box-shadow: 0 0 .3rem .3rem var(--light-grey);
+}
+
+#list-answers {
+  text-align: left;
+}
+
+.list-item {
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+
+
+@keyframes bouncingLetters {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundScroll {
+  0% {
+    background-size: 100%;
+  }
+
+  50% {
+    background-size: 150%;
+  }
+
+  100% {
+    background-size: 100%;
+  }
+}

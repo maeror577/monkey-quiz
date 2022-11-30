@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>ОбЕзЬяНиЙ ТеСт</title>
+</head>
+
+<body>
+  <div class="main-content">
+    <h1 id="main-content__header"></h1>
+    <p id="main-content__text"></p>
+    <div class="form-input">
+      <input type="text" id="input-commit" autofocus>
+      <button type="button" id="button-commit" onclick="checkQuestion(1)">Ответить</button>
+      <button type="button" id="button-continue" onclick="loadNext()">Продолжить</button>
+    </div>
+    <p id="text-hint">Заглушка</p>
+  </div>
+  <div id="wrapper-answers">
+    <h2>Ответы</h2>
+    <ol id="list-answers"></ol>
+  </div>
+
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
