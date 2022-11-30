@@ -152,8 +152,19 @@ const runTimer = () => {
 
 
 function loadNext(number) {
-  header.innerText = quiz.titles[number];
-  text.innerHTML = quiz.texts[number];
+
+  header.style.opacity = 0;
+  text.style.opacity = 0;
+  header.style.transition = `opacity 1s`;
+  text.style.transition = `opacity 1s`;
+  setTimeout(() => {
+    header.style.opacity = 1;
+    text.style.opacity = 1;
+    header.innerText = quiz.titles[number];
+    text.innerHTML = quiz.texts[number];
+  }, 1000);
+
+
   input.value = "";
   input.removeAttribute("disabled");
   buttonCommit.setAttribute("onclick", `checkQuestion(${number})`);
