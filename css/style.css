@@ -88,8 +88,11 @@ h1>span:nth-child(4) {
 }
 
 #button-commit,
-#button-continue {
-  display: inline-block;
+#button-continue,
+#button-music {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgba(0, 0, 0, 0.8);
   background-color: var(--light-green);
   box-shadow: 0 0 .2rem .2rem var(--light-green), .6rem .6rem .2rem gray;
@@ -111,17 +114,42 @@ h1>span:nth-child(4) {
   display: none;
 }
 
+#button-music {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: white;
+  box-shadow: 0 0 .2rem .2rem white, .6rem .6rem .2rem gray;
+  border-radius: 3rem;
+}
+
+#button-music>img {
+  padding: .2rem;
+  height: 1.5rem;
+  opacity: 0.8;
+}
+
 #button-commit:hover,
-#button-continue:hover {
+#button-continue:hover,
+#button-music:hover {
   transform: translateY(-.2rem);
   box-shadow: 0 0 .2rem .2rem var(--light-green), .8rem .8rem .2rem gray;
 }
 
+#button-music:hover {
+  box-shadow: 0 0 .2rem .2rem white, .8rem .8rem .2rem gray;
+}
+
 #button-commit:active,
 #button-continue:active,
+#button-music:active,
 .button__pressed {
   transform: translateY(.5rem);
   box-shadow: 0 0 .2rem .2rem var(--light-green), .4rem .4rem .2rem gray;
+}
+
+#button-music:active {
+  box-shadow: 0 0 .2rem .2rem white, .4rem .4rem .2rem gray;
 }
 
 .form-input {

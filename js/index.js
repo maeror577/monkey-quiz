@@ -1,4 +1,9 @@
+var music = new Audio('./audio/monster.mp3');
+music.loop = true;
+var isMusicPlaying = false;
 var hasAudioBeenPlayed = false;
+
+
 
 const quiz = {
   titles: {
@@ -70,6 +75,7 @@ const tooltip = document.getElementById("text-tooltip");
 const input = document.getElementById("input-commit");
 const buttonCommit = document.getElementById("button-commit");
 const buttonContinue = document.getElementById("button-continue");
+const buttonMusic = document.getElementById("button-music");
 const hint = document.getElementById("text-hint");
 
 header.innerText = quiz.titles[1];
@@ -103,6 +109,20 @@ function showTooltipWithSound() {
     tooltip.style.opacity = 0;
     tooltip.style.visibility = "hidden";
   }, 3000)
+}
+
+
+
+function playMusic() {
+  if (!isMusicPlaying) {
+    isMusicPlaying = true;
+    music.play();
+    buttonMusic.innerHTML = "<img src='./img/pause.png' alt=''>";
+  } else {
+    isMusicPlaying = false;
+    music.pause();
+    buttonMusic.innerHTML = "<img src='./img/music.png' alt=''>";
+  }
 }
 
 
@@ -155,14 +175,14 @@ function loadNext(number) {
 
   header.style.opacity = 0;
   text.style.opacity = 0;
-  header.style.transition = `opacity 1s`;
-  text.style.transition = `opacity 1s`;
+  header.style.transition = `opacity 500ms`;
+  text.style.transition = `opacity 500ms`;
   setTimeout(() => {
     header.style.opacity = 1;
     text.style.opacity = 1;
     header.innerText = quiz.titles[number];
     text.innerHTML = quiz.texts[number];
-  }, 1000);
+  }, 500);
 
 
   input.value = "";
