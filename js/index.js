@@ -19,6 +19,7 @@ const quiz = {
     10: "Загадка",
     11: "Загадка",
     12: "Загадка",
+    13: "Последняя тайна Древнего Бяо",
   },
   texts: {
     1: "Сколько же братьев было у знаменитого<br>гроссмейстера Рундила Уозлика?",
@@ -33,6 +34,7 @@ const quiz = {
     10: "Текст загадки",
     11: "Текст загадки",
     12: "Текст загадки",
+    13: "Взглянув на все свои ответы,<br>Перед собой увидишь приз,<br>И раскопав нутро дивана,<br>Быть может, в нём найдёшь сюрприз.",
   },
   images: {
     1: "weasley.jpg",
@@ -47,34 +49,37 @@ const quiz = {
     10: "weasley.jpg",
     11: "weasley.jpg",
     12: "weasley.jpg",
+    13: "weasley.jpg",
   },
   possibleAnswers: {
-    1: ["5", "пять", "five"],
-    2: ["6"],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-    7: [],
-    8: [],
-    9: [],
-    10: [],
-    11: [],
-    12: [],
+    1: ["в"],
+    2: ["н"],
+    3: ["у"],
+    4: ["т"],
+    5: ["р"],
+    6: ["и"],
+    7: ["д"],
+    8: ["и"],
+    9: ["в"],
+    10: ["а"],
+    11: ["н"],
+    12: ["а"],
+    13: ["0"],
   },
   correctAnswers: {
-    1: "Пять",
-    2: "Шесть",
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-    7: [],
-    8: [],
-    9: [],
-    10: [],
-    11: [],
-    12: [],
+    1: "В",
+    2: "Н",
+    3: "У",
+    4: "Т",
+    5: "Р",
+    6: "И",
+    7: "Д",
+    8: "И",
+    9: "В",
+    10: "А",
+    11: "Н",
+    12: "А",
+    13: "0",
   },
   hints: {
 
@@ -186,35 +191,38 @@ const runTimer = () => {
 
 
 function loadNext(number) {
+  if (number > Object.keys(quiz.titles).length) {
+    console.log("Done");
+  } else {
+    header.style.opacity = 0;
+    text.style.opacity = 0;
+    image.style.opacity = 0;
+    header.style.transition = `opacity 500ms`;
+    text.style.transition = `opacity 500ms`;
+    image.style.filter = "grayscale(100%) blur(0.5rem)";
+    setTimeout(() => {
+      header.style.opacity = 1;
+      text.style.opacity = 1;
+      image.style.opacity = 1;
+      header.innerText = quiz.titles[number];
+      text.innerHTML = quiz.texts[number];
+      image.setAttribute("src", `./img/${quiz.images[number]}`);
+    }, 500);
 
-  header.style.opacity = 0;
-  text.style.opacity = 0;
-  image.style.opacity = 0;
-  header.style.transition = `opacity 500ms`;
-  text.style.transition = `opacity 500ms`;
-  image.style.filter = "grayscale(100%) blur(5px)";
-  setTimeout(() => {
-    header.style.opacity = 1;
-    text.style.opacity = 1;
-    image.style.opacity = 1;
-    header.innerText = quiz.titles[number];
-    text.innerHTML = quiz.texts[number];
-    image.setAttribute("src", `./img/${quiz.images[number]}`);
-  }, 500);
 
+    input.value = "";
+    input.removeAttribute("disabled");
+    buttonCommit.setAttribute("onclick", `checkQuestion(${number})`);
 
-  input.value = "";
-  input.removeAttribute("disabled");
-  buttonCommit.setAttribute("onclick", `checkQuestion(${number})`);
+    // initial styling
+    hint.style.opacity = 0;
+    input.style.backgroundColor = "white";
+    input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
+    buttonContinue.style.display = "none";
+    buttonCommit.style.display = "inline-block";
 
-  // initial styling
-  hint.style.opacity = 0;
-  input.style.backgroundColor = "white";
-  input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
-  buttonContinue.style.display = "none";
-  buttonCommit.style.display = "inline-block";
-
-  input.focus();
+    input.focus();
+  }
 }
 
 

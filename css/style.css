@@ -10,7 +10,7 @@
 body {
   background-color: #b8c6db;
   font-family: 'Underdog', sans-serif;
-  font-size: 2.3vmin;
+  font-size: 3vmin;
   color: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: row;
@@ -33,11 +33,7 @@ body {
 }
 
 h1 {
-  font-size: 200%;
-}
-
-p {
-  font-size: 130%;
+  font-size: 150%;
 }
 
 h1>span {
@@ -72,6 +68,7 @@ h1>span:nth-child(4) {
   align-items: center;
   justify-content: space-around;
   box-shadow: 0 0 .3rem .3rem var(--light-grey);
+  padding: 0 1rem;
 }
 
 #text-underscore {
@@ -91,7 +88,7 @@ h1>span:nth-child(4) {
   cursor: pointer;
   text-decoration: none;
   font-family: 'Underdog', sans-serif;
-  font-size: 150%;
+  font-size: 120%;
   font-weight: 800;
   border: none;
   outline: none;
@@ -159,7 +156,7 @@ h1>span:nth-child(4) {
   color: black;
   box-shadow: 0 0 .3rem .3rem white, .6rem .6rem .2rem gray;
   font-family: 'Underdog', sans-serif;
-  font-size: 150%;
+  font-size: 120%;
   border: none;
   border-radius: 1rem;
   padding: .5rem;
@@ -172,7 +169,7 @@ h1>span:nth-child(4) {
 
 #text-tooltip,
 #text-hint {
-  font-size: 100%;
+  font-size: 80%;
   opacity: 0;
   transition-duration: 1s;
 }
@@ -211,7 +208,7 @@ h1>span:nth-child(4) {
 #image {
   height: auto;
   width: 100%;
-  filter: grayscale(100%) blur(5px);
+  filter: grayscale(100%) blur(0.5rem);
   transition-duration: 1s;
 }
 
@@ -228,7 +225,9 @@ h1>span:nth-child(4) {
   justify-content: center;
   align-items: space-around;
   text-align: left;
+  margin-top: 2rem;
   max-height: 50%;
+  font-size: 80%;
 }
 
 .list-item {
