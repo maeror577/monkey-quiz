@@ -16,7 +16,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10%;
+  gap: 5%;
   height: 100vh;
   margin: 0 10%;
   text-align: center;
@@ -172,26 +172,63 @@ h1>span:nth-child(4) {
 
 #text-tooltip,
 #text-hint {
-  margin: 2rem;
   font-size: 100%;
   opacity: 0;
   transition-duration: 1s;
 }
 
 #text-tooltip {
+  margin: 0;
   position: absolute;
   top: .3rem;
   right: .3rem;
 }
 
-#wrapper-answers {
+#text-hint {
+  margin: 2rem;
+}
+
+.wrapper-sidepanel {
   flex: 1;
+  display: flex;
+  gap: 5%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 75%;
+}
+
+.wrapper-image {
+  background-color: var(--light-grey);
+  box-shadow: 0 0 .3rem .3rem var(--light-grey);
+  height: 45%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#image {
+  height: auto;
+  width: 100%;
+  filter: grayscale(100%) blur(5px);
+  transition-duration: 1s;
+}
+
+.wrapper-answers {
+  height: 45%;
   background-color: var(--light-grey);
   box-shadow: 0 0 .3rem .3rem var(--light-grey);
 }
 
 #list-answers {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-around;
   text-align: left;
+  max-height: 50%;
 }
 
 .list-item {

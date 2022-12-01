@@ -34,6 +34,20 @@ const quiz = {
     11: "Текст загадки",
     12: "Текст загадки",
   },
+  images: {
+    1: "weasley.jpg",
+    2: "weasley.jpg",
+    3: "weasley.jpg",
+    4: "weasley.jpg",
+    5: "weasley.jpg",
+    6: "weasley.jpg",
+    7: "weasley.jpg",
+    8: "weasley.jpg",
+    9: "weasley.jpg",
+    10: "weasley.jpg",
+    11: "weasley.jpg",
+    12: "weasley.jpg",
+  },
   possibleAnswers: {
     1: ["5", "пять", "five"],
     2: ["6"],
@@ -69,7 +83,7 @@ const quiz = {
 
 const header = document.getElementById("main-content__header");
 const text = document.getElementById("main-content__text");
-const answers = document.getElementById("wrapper-answers");
+const image = document.getElementById("image");
 const list = document.getElementById("list-answers");
 const tooltip = document.getElementById("text-tooltip");
 const input = document.getElementById("input-commit");
@@ -128,13 +142,13 @@ function playMusic() {
 
 
 function fillAnswers(value) {
-  let element = document.createElement("li");
-  element.classList.add("list-item");
-  element.innerText = value;
-  list.appendChild(element);
+  let listItem = document.createElement("li");
+  listItem.classList.add("list-item");
+  listItem.innerText = value;
+  list.appendChild(listItem);
 
   setTimeout(function () {
-    element.style.opacity = 1;
+    listItem.style.opacity = 1;
   }, 100);
 }
 
@@ -175,13 +189,17 @@ function loadNext(number) {
 
   header.style.opacity = 0;
   text.style.opacity = 0;
+  image.style.opacity = 0;
   header.style.transition = `opacity 500ms`;
   text.style.transition = `opacity 500ms`;
+  image.style.filter = "grayscale(100%) blur(5px)";
   setTimeout(() => {
     header.style.opacity = 1;
     text.style.opacity = 1;
+    image.style.opacity = 1;
     header.innerText = quiz.titles[number];
     text.innerHTML = quiz.texts[number];
+    image.setAttribute("src", `./img/${quiz.images[number]}`);
   }, 500);
 
 
@@ -207,6 +225,7 @@ function checkQuestion(number) {
   if (quiz.possibleAnswers[number].includes(value)) {
     input.style.backgroundColor = "var(--light-green)";
     input.style.boxShadow = "0 0 .3rem .3rem var(--light-green), .6rem .6rem .2rem gray";
+    image.style.filter = "none";
     hint.innerText = "Ты прав, маленький умник!";
     buttonCommit.style.display = "none";
     buttonContinue.style.display = "inline-block";
