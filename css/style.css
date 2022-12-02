@@ -93,10 +93,9 @@ h1>span:nth-child(4) {
   border: none;
   outline: none;
   border-radius: 1rem;
-  padding: .5rem;
   margin: 1rem;
+  padding: 0.5rem;
   transition-duration: .3s;
-  max-width: 50%;
 }
 
 #button-continue {
@@ -110,11 +109,12 @@ h1>span:nth-child(4) {
   background-color: white;
   box-shadow: 0 0 .2rem .2rem white, .6rem .6rem .2rem gray;
   border-radius: 3rem;
+  padding: .5rem;
 }
 
 #button-music>img {
-  padding: .2rem;
   height: 1.5rem;
+  width: auto;
   opacity: 0.8;
 }
 
@@ -146,7 +146,6 @@ h1>span:nth-child(4) {
 }
 
 .form-input {
-  position: relative;
   display: flex;
   justify-content: space-between;
   width: 75%;
@@ -163,7 +162,6 @@ h1>span:nth-child(4) {
   margin: 1rem;
   text-align: center;
   outline: none;
-  max-width: 50%;
   transition-duration: 1s;
 }
 
@@ -182,7 +180,8 @@ h1>span:nth-child(4) {
 }
 
 #text-hint {
-  margin: 2rem;
+  flex-basis: 10%;
+  padding: auto 10%;
 }
 
 .wrapper-sidepanel {
@@ -262,5 +261,22 @@ h1>span:nth-child(4) {
 
   100% {
     background-size: 100%;
+  }
+}
+
+@media (max-width:801px) {
+
+  body {
+    font-size: 4vmin;
+  }
+
+  .wrapper-sidepanel,
+  #button-music {
+    display: none;
+  }
+
+  .main-content {
+    height: 90%;
+    min-width: 100%;
   }
 }
