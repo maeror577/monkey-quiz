@@ -52,18 +52,18 @@ const quiz = {
     13: "weasley.jpg",
   },
   possibleAnswers: {
-    1: ["аркаим"],
-    2: ["нэнси дрю", "нэнси дру", "нэнси", "дрю", "дру", "nancy drew", "nancy", "drew"],
-    3: ["андрей тарковский", "андрей", "тарковский"],
-    4: ["вифсла", "тофсла", "тофсла и вифсла", "вифсла и тофсла", "тофсла вифсла", "вифсла тофсла"],
-    5: ["империус", "imperio", "империо", "imperius"],
-    6: ["доппельгангер", "допельгангер", "двойник", "doppelganger"],
-    7: ["инструмент"],
-    8: ["р"],
-    9: ["тоторо", "мой сосед тоторо"],
-    10: ["усик маркосян", "усик", "маркосян"],
-    11: ["н"],
-    12: ["в"],
+    1: ["0", "аркаим"],
+    2: ["0", "нэнси дрю", "нэнси дру", "нэнси", "дрю", "дру", "nancy drew", "nancy", "drew"],
+    3: ["0", "андрей тарковский", "андрей", "тарковский"],
+    4: ["0", "вифсла", "тофсла", "тофсла и вифсла", "вифсла и тофсла", "тофсла вифсла", "вифсла тофсла"],
+    5: ["0", "империус", "imperio", "империо", "imperius"],
+    6: ["0", "доппельгангер", "допельгангер", "двойник", "doppelganger"],
+    7: ["0", "инструмент"],
+    8: ["0", "р"],
+    9: ["0", "тоторо", "мой сосед тоторо"],
+    10: ["0", "усик маркосян", "усик", "маркосян"],
+    11: ["0", "н"],
+    12: ["0", "в"],
     13: ["0"],
   },
   correctAnswers: {
@@ -192,43 +192,39 @@ const runTimer = () => {
 
 
 function loadNext(number) {
-  if (number > Object.keys(quiz.titles).length) {
-    console.log("Done");
-  } else {
-    if (number === Object.keys(quiz.titles).length) {
-      for (let letter of list.getElementsByTagName("span")) {
-        letter.classList.add("shaking-letters");
-      };
-    }
-    header.style.opacity = 0;
-    text.style.opacity = 0;
-    image.style.opacity = 0;
-    header.style.transition = `opacity 500ms`;
-    text.style.transition = `opacity 500ms`;
-    image.style.filter = "grayscale(100%) blur(0.5rem)";
-    setTimeout(() => {
-      header.style.opacity = 1;
-      text.style.opacity = 1;
-      image.style.opacity = 1;
-      header.innerText = quiz.titles[number];
-      text.innerHTML = quiz.texts[number];
-      image.setAttribute("src", `./img/${quiz.images[number]}`);
-    }, 500);
-
-
-    input.value = "";
-    input.removeAttribute("disabled");
-    buttonCommit.setAttribute("onclick", `checkQuestion(${number})`);
-
-    // initial styling
-    hint.style.opacity = 0;
-    input.style.backgroundColor = "white";
-    input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
-    buttonContinue.style.display = "none";
-    buttonCommit.style.display = "inline-block";
-
-    input.focus();
+  if (number === Object.keys(quiz.titles).length) {
+    for (let letter of list.getElementsByTagName("span")) {
+      letter.classList.add("shaking-letters");
+    };
   }
+  header.style.opacity = 0;
+  text.style.opacity = 0;
+  image.style.opacity = 0;
+  header.style.transition = `opacity 500ms`;
+  text.style.transition = `opacity 500ms`;
+  image.style.filter = "grayscale(100%) blur(0.5rem)";
+  setTimeout(() => {
+    header.style.opacity = 1;
+    text.style.opacity = 1;
+    image.style.opacity = 1;
+    header.innerText = quiz.titles[number];
+    text.innerHTML = quiz.texts[number];
+    image.setAttribute("src", `./img/${quiz.images[number]}`);
+  }, 500);
+
+
+  input.value = "";
+  input.removeAttribute("disabled");
+  buttonCommit.setAttribute("onclick", `checkQuestion(${number})`);
+
+  // initial styling
+  hint.style.opacity = 0;
+  input.style.backgroundColor = "white";
+  input.style.boxShadow = "0 0 .3rem .3rem white, .6rem .6rem .2rem gray";
+  buttonContinue.style.display = "none";
+  buttonCommit.style.display = "inline-block";
+
+  input.focus();
 }
 
 
@@ -243,13 +239,14 @@ function checkQuestion(number) {
     hint.innerText = "Ты прав, маленький умник!";
     buttonCommit.style.display = "none";
     buttonContinue.style.display = "inline-block";
-    buttonContinue.setAttribute("onclick", `loadNext(${number + 1})`);
 
     if (number < Object.keys(quiz.titles).length) {
       fillAnswers(quiz.correctAnswers[number]);
+      buttonContinue.setAttribute("onclick", `loadNext(${number + 1})`);
     } else {
       const hiddenText = document.getElementById("hidden-text");
       hiddenText.style.opacity = "1";
+      buttonContinue.setAttribute("onclick", "location.href='./congratulations.html'");
     }
   } else {
     input.style.backgroundColor = "var(--light-red)";
