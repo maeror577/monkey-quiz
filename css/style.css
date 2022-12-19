@@ -206,7 +206,7 @@ h1>span:nth-child(4) {
 
 #image {
   height: auto;
-  width: 100%;
+  max-width: 100%;
   filter: grayscale(100%) blur(0.5rem);
   transition-duration: 1s;
 }
@@ -226,12 +226,17 @@ h1>span:nth-child(4) {
   text-align: left;
   margin-top: 2rem;
   max-height: 50%;
-  font-size: 80%;
+  font-size: 75%;
 }
 
 .list-item {
   opacity: 0;
   transition-duration: 1s;
+}
+
+.shaking-letters {
+  display: inline-block;
+  animation: shakingLetters 0.5s infinite;
 }
 
 
@@ -247,6 +252,28 @@ h1>span:nth-child(4) {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes shakingLetters {
+  0% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(0);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(0);
   }
 }
 
