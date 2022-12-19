@@ -34,7 +34,7 @@ const quiz = {
     10: "ТРЭКОЛ заправлен, стёклы чисты,<br>Сегодня обошла беда.<br>Текут все реки в Саранпауль,<br>Блестит прозрачная вода.<br><br>Подводный мир пусть спит спокойно,<br>На страже друг всех обезьян,<br>Обрадованный красотою,<br>Отважный _______ !",
     11: "Текст загадки",
     12: "Текст загадки",
-    13: "Взгляни-ка на свои ответы:<br>Танцуют буковки фокстрот!<br>Ты прочитать их можешь прямо,<br>А можешь и наоборот.<br><br>Найди, что спрятано доселе,<br>И слово тайное введи.<br>Тобой доволен Мудрый Бяо,<br>Счастливый год ждёт впереди!",
+    13: "Взгляни-ка на свои ответы:<br>Танцуют буковки фокстрот!<br>Ты прочитать их можешь прямо,<br>А можешь и наоборот.<br><br>Найди, что спрятано доселе,<br>И слово тайное введи.<br><span id='hidden-text'>Тобой доволен Мудрый Бяо,<br>Счастливый год ждёт впереди!</span>",
   },
   images: {
     1: "arkaim.jpg",
@@ -245,7 +245,12 @@ function checkQuestion(number) {
     buttonContinue.style.display = "inline-block";
     buttonContinue.setAttribute("onclick", `loadNext(${number + 1})`);
 
-    fillAnswers(quiz.correctAnswers[number]);
+    if (number < Object.keys(quiz.titles).length) {
+      fillAnswers(quiz.correctAnswers[number]);
+    } else {
+      const hiddenText = document.getElementById("hidden-text");
+      hiddenText.style.opacity = "1";
+    }
   } else {
     input.style.backgroundColor = "var(--light-red)";
     input.style.boxShadow = "0 0 .3rem .3rem var(--light-red), .6rem .6rem .2rem gray";
