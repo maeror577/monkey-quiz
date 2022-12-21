@@ -244,6 +244,28 @@ h1>span:nth-child(4) {
   color: rgba(0, 0, 0, 1);
 }
 
+.small-text {
+  position: absolute;
+  bottom: 0rem;
+  right: 1rem;
+  font-weight: 800;
+  font-size: 0.7rem;
+}
+
+.small-text>a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.text-complain>p {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.text-complain>ul {
+  text-align: left;
+  align-self: flex-start;
+}
+
 .shaking-letters {
   display: inline-block;
   animation: shakingLetters 0.5s infinite;
