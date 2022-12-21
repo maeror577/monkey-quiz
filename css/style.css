@@ -256,6 +256,11 @@ h1>span:nth-child(4) {
   color: rgba(0, 0, 0, 0.8);
 }
 
+.text-complain {
+  height: 55%;
+  justify-content: flex-start;
+}
+
 .text-complain>p {
   text-align: left;
   margin-left: 2rem;
@@ -264,6 +269,15 @@ h1>span:nth-child(4) {
 .text-complain>ul {
   text-align: left;
   align-self: flex-start;
+  margin: 0;
+}
+
+.text-complain>ul>li {
+  filter: blur(0.3rem);
+}
+
+.text-complain>ul>li:hover {
+  filter: none;
 }
 
 .shaking-letters {
